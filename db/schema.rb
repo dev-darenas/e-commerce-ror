@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 2020_06_16_045313) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.string "slug"
     t.integer "store_id", null: false
+    t.datetime "available_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_products_on_slug", unique: true
@@ -64,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_045313) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007fe563f63f88>"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x000055e3626f1530>"
     t.index ["slug"], name: "index_stores_on_slug", unique: true
   end
 

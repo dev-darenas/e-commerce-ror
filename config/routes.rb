@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/dashboard'
+  root "user#dashboard"
   devise_for :users
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
