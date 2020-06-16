@@ -3,4 +3,6 @@ class Store < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :users
+  has_many :products
+  has_many :variants
 end

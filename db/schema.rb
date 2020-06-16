@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_042425) do
+ActiveRecord::Schema.define(version: 2020_06_16_045313) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_042425) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_products_on_slug", unique: true
+    t.index ["store_id"], name: "index_products_on_store_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -73,4 +83,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_042425) do
     t.index ["store_id"], name: "index_users_on_store_id"
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.boolean "is_master"
+    t.integer "store_id", null: false
+    t.integer "product_id", null: false
+    t.decimal "cost_price"
+    t.string "sku"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_variants_on_product_id"
+    t.index ["store_id"], name: "index_variants_on_store_id"
+  end
+
+  add_foreign_key "products", "stores"
+  add_foreign_key "variants", "products"
+  add_foreign_key "variants", "stores"
 end

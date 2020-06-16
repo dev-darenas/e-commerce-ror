@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_master: false
+  store: one
+  product: one
+  cost_price: 9.99
+  sku: MyString
+
+two:
+  is_master: false
+  store: two
+  product: two
+  cost_price: 9.99
+  sku: MyString
