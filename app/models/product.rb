@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   delegate :price, :price=, to: :find_or_build_master
 
   def find_or_build_master
-    master || build_master
+    master || build_master(store: self.store)
   end
 
   private
@@ -34,6 +34,6 @@ class Product < ApplicationRecord
   end
 
   def save_master
-    # master.save!
+    find_or_build_master.save!
   end
 end
