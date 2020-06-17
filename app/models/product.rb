@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_many :product_option_type
+  has_many :option_type, through: :product_option_type
   belongs_to :store
   after_save :save_master
 
