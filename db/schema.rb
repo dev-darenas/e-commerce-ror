@@ -59,8 +59,12 @@ ActiveRecord::Schema.define(version: 2020_06_17_193919) do
   end
 
   create_table "product_option_types", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "option_types_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_types_id"], name: "index_product_option_types_on_option_types_id"
+    t.index ["product_id"], name: "index_product_option_types_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|

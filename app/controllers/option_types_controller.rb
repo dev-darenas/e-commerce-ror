@@ -1,5 +1,4 @@
 class OptionTypesController < ApplicationController
-    before_action :load_store
     def index
         @option_type = OptionType.all.order("created_at DESC")
     end
@@ -50,8 +49,5 @@ class OptionTypesController < ApplicationController
     end
     def option_type_params
         params.require(:option_type).permit(:name, :presentation)
-    end
-    def load_store
-      @store = current_user.store
     end
 end
