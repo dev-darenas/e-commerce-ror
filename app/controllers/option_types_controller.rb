@@ -1,13 +1,16 @@
 class OptionTypesController < ApplicationController
+    before_action :load_store
     def index
         @option_type = OptionType.all.order("created_at DESC")
-      end
+    end
     def new
         @option_type = OptionType.new
     end
     def show
+        @option_type = OptionType.find(params[:id])
     end
     def edit
+        @option_type = OptionType.find(params[:id])
     end
     def create
         @option_type = OptionType.new(option_type_params)
@@ -31,15 +34,24 @@ class OptionTypesController < ApplicationController
             format.json { render json: @option_type.errors, status: :unprocessable_entity }
           end
         end
+        @option_type = OptionType.find(params[:id])
+ 
+        if @option_type.update(option_type_params)
+          redirect_to @option_type
+        else
+          render 'edit'
+        end
     end
     def destroy
+        @option_type = OptionType.find(params[:id])
         @option_type.destroy
-        respond_to do |format|
-          format.html { redirect_to option_types_url, notice: 'Option type was successfully destroyed.' }
-          format.json { head :no_content }
-        end
+ 
+        redirect_to option_types_url
     end
     def option_type_params
         params.require(:option_type).permit(:name, :presentation)
+    end
+    def load_store
+      @store = current_user.store
     end
 end

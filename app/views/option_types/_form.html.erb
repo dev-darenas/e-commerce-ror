@@ -1,0 +1,15 @@
+<%= form_with scope: :option_type, url: option_types_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :presentation %><br>
+    <%= form.text_area :presentation %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
