@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_193919) do
+ActiveRecord::Schema.define(version: 2020_06_19_201849) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 2020_06_17_193919) do
     t.index ["product_id"], name: "index_product_option_types_on_product_id"
   end
 
+  create_table "product_properties", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "property_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_properties_on_product_id"
+    t.index ["property_id"], name: "index_product_properties_on_property_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -77,6 +86,13 @@ ActiveRecord::Schema.define(version: 2020_06_17_193919) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_products_on_slug", unique: true
     t.index ["store_id"], name: "index_products_on_store_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "name"
+    t.string "presentation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stores", force: :cascade do |t|

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'user/dashboard'
   root "user#dashboard"
   resources :option_types
+  resources :properties
 end

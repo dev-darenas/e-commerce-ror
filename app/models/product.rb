@@ -3,7 +3,9 @@ class Product < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :product_option_types
+  has_many :product_propertys
   has_many :option_types, through: :product_option_type
+  has_many :propertys, through: :product_propertys
   belongs_to :store
   after_save :save_master
 
