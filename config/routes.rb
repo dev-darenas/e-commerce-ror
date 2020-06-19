@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'user/dashboard'
   root "user#dashboard"
+
+  resources :option_types
+
   namespace :api do
     namespace :v1 do
       resources :stores do

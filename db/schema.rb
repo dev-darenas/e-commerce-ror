@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_045313) do
+ActiveRecord::Schema.define(version: 2020_06_17_193919) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -47,6 +47,24 @@ ActiveRecord::Schema.define(version: 2020_06_16_045313) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "option_types", force: :cascade do |t|
+    t.string "name"
+    t.string "presentation"
+    t.integer "store_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_option_types_on_store_id"
+  end
+
+  create_table "product_option_types", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "option_types_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_types_id"], name: "index_product_option_types_on_option_types_id"
+    t.index ["product_id"], name: "index_product_option_types_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|

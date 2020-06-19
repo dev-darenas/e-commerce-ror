@@ -1,0 +1,17 @@
+<% content_for :page_title,  "Index" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Presentation</th>
+    <th></th>
+  </tr>
+ 
+  <% @option_types.each do |option| %>
+    <tr>
+      <td><%= option.name %></td>
+      <td><%= option.presentation %></td>
+      <td><%= link_to 'Show', option_type_path(option) %></td>
+    </tr>
+  <% end %>
+</table>

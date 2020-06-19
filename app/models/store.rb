@@ -5,4 +5,5 @@ class Store < ApplicationRecord
   has_many :users
   has_many :products
   has_many :variants
+  has_many :option_types
 end
