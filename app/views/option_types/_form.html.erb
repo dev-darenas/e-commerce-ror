@@ -1,4 +1,4 @@
-<%= form_with scope: :option_types, url: option_types_path, local: true do |form| %>
+<%= form_with model: option_type do |form| %>
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
