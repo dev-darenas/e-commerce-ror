@@ -1,4 +1,4 @@
-class PropertiesController < ApplicationController
+class PropertiesController < StoreController
   before_action :load_properties, only: [:edit, :show, :update, :destroy]
 
     def index

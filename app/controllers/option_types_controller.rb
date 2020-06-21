@@ -1,4 +1,4 @@
-class OptionTypesController < ApplicationController
+class OptionTypesController < StoreController
     before_action :load_option_types, only: [:edit, :show, :update, :destroy]
 
     def index
