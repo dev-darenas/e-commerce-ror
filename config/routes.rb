@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root "user#dashboard"
 
   resources :option_types
+  resources :properties
 
   namespace :api do
     namespace :v1 do
