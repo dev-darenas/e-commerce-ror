@@ -91,8 +91,10 @@ ActiveRecord::Schema.define(version: 2020_06_19_201849) do
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.string "presentation"
+    t.integer "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_properties_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|

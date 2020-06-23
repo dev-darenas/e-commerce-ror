@@ -28,6 +28,8 @@ class OptionTypesController < StoreController
         redirect_to option_types_url
     end
 
+    private
+
     def load_option_types
       @option_types = @store.option_types.find(params[:id])
     end
