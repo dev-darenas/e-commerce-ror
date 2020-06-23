@@ -3,6 +3,7 @@ class CreateProperties < ActiveRecord::Migration[6.0]
     create_table :properties do |t|
       t.string :name
       t.string :presentation
+      t.references :store
 
       t.timestamps
     end
