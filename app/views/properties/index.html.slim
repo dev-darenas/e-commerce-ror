@@ -1,0 +1,14 @@
+- content_for :page_title,  "Index"
+
+table
+  tr
+    th Name
+    th Presentation
+    th
+ 
+  - @properties.each do |property|
+    tr
+      td = property.name
+      td = property.presentation
+      td = link_to 'Show', property_path(property) 
+  = link_to 'New', new_property_path

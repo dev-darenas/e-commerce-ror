@@ -1,0 +1,12 @@
+= form_with model: property do |form|
+  p
+    = form.label :name
+    = form.text_field :name
+ 
+  p
+    = form.label :presentation 
+    = form.text_area :presentation
+ 
+  p
+    = form.submit
+  = link_to 'Back', properties_path

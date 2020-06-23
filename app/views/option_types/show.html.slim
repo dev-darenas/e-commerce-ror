@@ -1,0 +1,20 @@
+- content_for :page_title, @option_types.name
+
+section class="section"
+	div class="container"
+		nav class="level"
+		  div class="level-left"
+		    p class="level-item"
+		        strong Actions
+		  div class="level-right"
+		  	p class="level-item"
+		    	= link_to "Edit", edit_option_type_path(@option_types), class:"button"
+		  	p class="level-item"
+				= link_to "Delete", option_type_path(@option_types), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger"
+		hr
+
+		div class="content"
+			= @option_types.name
+			br
+			= @option_types.presentation
+	= link_to 'Back', option_types_path

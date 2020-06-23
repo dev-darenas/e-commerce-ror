@@ -1,0 +1,14 @@
+= form_with model: option_type do |form|
+  p
+    = form.label :name
+    br
+    = form.text_field :name
+ 
+  p
+    = form.label :presentation 
+    br
+    = form.text_area :presentation
+ 
+  p
+    = form.submit
+  = link_to 'Back', option_types_path

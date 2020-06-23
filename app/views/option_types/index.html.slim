@@ -1,0 +1,14 @@
+- content_for :page_title,  "Index"
+
+table
+  tr
+    th Name
+    th Presentation
+    th
+ 
+  - @option_types.each do |option|
+    tr
+      td = option.name
+      td = option.presentation
+      td = link_to 'Show', option_type_path(option)
+  = link_to 'New', new_option_type_path
