@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_201849) do
+ActiveRecord::Schema.define(version: 2020_06_24_133333) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_06_19_201849) do
     t.index ["store_id"], name: "index_option_types_on_store_id"
   end
 
+  create_table "option_values", force: :cascade do |t|
+    t.string "name"
+    t.string "presentation"
+    t.integer "option_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_type_id"], name: "index_option_values_on_option_type_id"
+  end
+
   create_table "product_option_types", force: :cascade do |t|
     t.integer "product_id"
     t.integer "option_types_id"
@@ -100,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_201849) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x000055e3626f1530>"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x000055c0aa70d148>"
     t.index ["slug"], name: "index_stores_on_slug", unique: true
   end
 
@@ -131,6 +140,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_201849) do
     t.index ["store_id"], name: "index_variants_on_store_id"
   end
 
+  add_foreign_key "option_values", "option_types"
   add_foreign_key "products", "stores"
   add_foreign_key "variants", "products"
   add_foreign_key "variants", "stores"

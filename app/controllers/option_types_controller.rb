@@ -7,6 +7,11 @@ class OptionTypesController < StoreController
 
     def new
         @option_types = @store.option_types.new
+        @option_types.option_values.build
+    end
+
+    def edit
+        @option_types.option_values.build
     end
 
     def create
@@ -33,6 +38,7 @@ class OptionTypesController < StoreController
     end
     
     def option_types_params
-        params.require(:option_type).permit(:name, :presentation)
+        params.require(:option_type).permit(:name, :presentation,
+         :option_values_attributes => [:name, :presentation])
     end
 end
