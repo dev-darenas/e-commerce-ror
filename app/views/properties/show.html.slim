@@ -1,0 +1,19 @@
+- content_for :page_title, @properties.name
+
+section class="section"
+	div class="container"
+		nav class="level"
+		  div class="level-left"
+		    p class="level-item"
+		        strong Actions
+		  div class="level-right"
+		  	p class="level-item"
+		    	= link_to "Edit", edit_property_path(@properties), class:"button"
+		  	p class="level-item"
+				= link_to "Delete", property_path(@properties), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger"
+		hr
+		div class="content"
+			= @properties.name
+			br
+			= @properties.presentation
+	= link_to 'Back', properties_path
