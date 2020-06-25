@@ -1,3 +1,3 @@
 class OptionValue < ApplicationRecord
-  belongs_to :option_type, optional: true
+  belongs_to :option_type
 end
