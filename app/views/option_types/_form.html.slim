@@ -8,7 +8,20 @@
     = form.label :presentation 
     br
     = form.text_area :presentation
- 
+
+  h1 Option values
+  p
+    h3 Value
+    = form.fields_for :option_values do |o|
+      p
+        = o.label :name
+        br
+        = o.text_field :name
+      p
+        = o.label :presentation
+        br
+        = o.text_field :presentation
   p
     = form.submit
   = link_to 'Back', option_types_path
+  
