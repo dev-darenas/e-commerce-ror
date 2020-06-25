@@ -3,7 +3,7 @@ html
   head
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title = content_for?(:title) ? yield(:title) : "E-Commerce"
-    meta name="description" content="= content_for?(:description) ? yield(:description) : "E-Commerce""
+    meta name="description"
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -11,10 +11,23 @@ html
     = javascript_pack_tag 'store', 'data-turbolinks-track': 'reload'
 
   body
+    nav class="navbar navbar-expand-lg navbar-light bg-light"
+      a class="navbar-brand" href="#" Navbar
+      button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        span class="navbar-toggler-icon"
+    div class="collapse navbar-collapse" id="navbarSupportedContent"
+      ul class="navbar-nav mr-auto"
+        li class="nav-item active"
+          a class="nav-link" href="#" Home 
+          span class="sr-only"(current)
+      form class="form-inline my-2 my-lg-0"
+        input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+        button class="btn btn-outline-success my-2 my-sm-0" type="submit"Search
+        
     - if notice
       p class="alert alert-success" 
       = notice
     - if alert
-      <p class="alert alert-danger" 
+      p class="alert alert-danger" 
       = alert
     = yield
