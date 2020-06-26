@@ -1,9 +1,11 @@
-= stylesheet_link_tag 'store'
 - content_for :page_title, @properties.name
-
+br
 section class="section"
 	div class="container"
 		nav class="level"
+		  div class="level-left"
+		    p class="level-item"
+		        = link_to 'Back', properties_path
 		  div class="level-left"
 		    p class="level-item"
 		        strong Actions
@@ -13,9 +15,14 @@ section class="section"
 		  	p class="level-item"
 				= link_to "Delete", property_path(@properties), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger"
 		hr
+
 		div class="content"
+			strong Name
+			br
 			= @properties.name
 			br
+			br
+			strong Presentation
+			br
 			= @properties.presentation
-	= link_to 'Back', properties_path
-	
+			hr

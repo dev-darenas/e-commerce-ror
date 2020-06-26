@@ -1,9 +1,11 @@
 - content_for :page_title, @option_types.name
-= stylesheet_link_tag 'store'
-
+br
 section class="section"
 	div class="container"
 		nav class="level"
+		  div class="level-left"
+		    p class="level-item"
+		        = link_to 'Back', option_types_path
 		  div class="level-left"
 		    p class="level-item"
 		        strong Actions
@@ -15,8 +17,12 @@ section class="section"
 		hr
 
 		div class="content"
+			strong Name
+			br
 			= @option_types.name
 			br
+			br
+			strong Presentation
+			br
 			= @option_types.presentation
-	= link_to 'Back', option_types_path
-	
+			hr
