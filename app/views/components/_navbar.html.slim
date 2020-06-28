@@ -1,15 +1,32 @@
-nav class="navbar navbar-expand-lg navbar-light bg-light"
-    a class="navbar-brand" href="/" E-Commerce
-    button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-      span class="navbar-toggler-icon"
-    div class="collapse navbar-collapse" id="navbarSupportedContent"
-      ul class="navbar-nav mr-auto"
-        li class="nav-item active"
-            = link_to 'Option types', option_types_path, class: 'nav-link'
-        li class="nav-item active"
-            = link_to 'Properties', properties_path, class: 'nav-link'
-      form class="form-inline my-2 my-lg-0"
-        input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-        button class="btn btn-outline-success my-2 my-sm-0" type="submit"Search
-      = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link my-2 my-lg-0'
-       
+ul.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion#accordionSidebar
+  a.sidebar-brand.d-flex.align-items-center.justify-content-center href="/"
+    .sidebar-brand-icon.rotate-n-15
+      i.fas.fa-laugh-wink
+    .sidebar-brand-text.mx-3 e-commerce
+  .sidebar-divider.my-0
+
+  li.nav-item.active
+    a.nav-link href="/"
+      i.fas.fa-fw.fa-tachometer-alt
+      span Dashboard
+
+  hr.sidebar-divider
+
+  .sidebar-heading
+    | Configuracion
+
+  li.nav-item
+    a.nav-link.collapsed href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"
+      i.fas.fa-fw.fa-cog
+      span Tienda
+
+    .collapse#collapseTwo aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+      .bg-white.py-2.collapse-inner.rounded
+        h6.collapse-header Configurar Productos
+        = link_to 'Propiedades', properties_path, class: 'collapse-item'
+        = link_to 'Tipos de opciones', option_types_path, class: 'collapse-item'
+
+  hr.sidebar-divider.d-none.d-md-block
+
+  div.text-center.d-none.d-md-inline
+    button.rounded-circle.border-0#sidebarToggle
