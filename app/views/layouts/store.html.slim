@@ -7,16 +7,71 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
+    link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" /
+
     = stylesheet_link_tag 'store', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'store', 'data-turbolinks-track': 'reload'
 
-  body
-    - if !devise_controller?
-      = render 'components/navbar'
-    - if notice
-      p class="alert alert-success" 
-        = notice
-    - if alert
-      p class="alert alert-danger" 
-        = alert
-    = yield
+  body#page-top
+    #wrapper
+      ul.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion#accordionSidebar
+        a.sidebar-brand.d-flex.align-items-center.justify-content-center href="/"
+          .sidebar-brand-icon.rotate-n-15
+            i.fas.fa-laugh-wink
+          .sidebar-brand-text.mx-3 e-commerce
+        .sidebar-divider.my-0
+
+        li.nav-item.active
+          a.nav-link href="/"
+            i.fas.fa-fw.fa-tachometer-alt
+            span Dashboard
+
+        hr.sidebar-divider
+
+        .sidebar-heading
+          | Configuracion
+
+        li.nav-item
+          a.nav-link.collapsed href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"
+            i.fas.fa-fw.fa-cog
+            span Tienda
+
+          .collapse#collapseTwo aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+            .bg-white.py-2.collapse-inner.rounded
+              h6.collapse-header Configurar Productos
+              a.collapse-item href="" Buttons
+              a.collapse-item href="cards.html" Cards
+
+        hr.sidebar-divider.d-none.d-md-block
+
+        div.text-center.d-none.d-md-inline
+          button.rounded-circle.border-0#sidebarToggle
+
+      .d-flex.flex-column#content-wrapper
+        #content
+          nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+            button.btn.btn-link.d-md-none.rounded-circle.mr-3#sidebarToggleTop
+              i.fa.fa-bars
+
+            ul.navbar-nav.ml-auto
+              .topbar-divider.d-none.d-sm-block
+
+              li.nav-item.dropdown.no-arrow
+                a.nav-link.dropdown-toggle#userDropdown href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  span.mr-2.d-none.d-lg-inline.text-gray-600.small = current_user.email
+                  img.img-profile.rounded-circle src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+
+                .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in aria-labelledby="userDropdown"
+                  a.dropdown-item href="#"
+                    i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                    | Perfil
+                  a.dropdown-item href="#"
+                    i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                    | Configuracion
+                  div.dropdown-divider
+                  a.dropdown-item href="#" data-toggle="modal" data-target="#logoutModal"
+                    i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                    | Salir
+
+          .container-fluid
+            = yield
