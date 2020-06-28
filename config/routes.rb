@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'user/dashboard'
-  root "user#dashboard"
+  root "dashboard#index"
 
+  resources :dashboard, only: [:index]
   resources :option_types
   resources :properties
   resources :option_values

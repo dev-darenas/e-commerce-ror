@@ -12,8 +12,9 @@ html
 
   body
     - if notice
-      p class="alert alert-success" = notice
+      p class="alert alert-success" 
+        = notice
     - if alert
-      p class="alert alert-danger" = alert
+      p class="alert alert-danger"
+        = alert
     = yield
-    

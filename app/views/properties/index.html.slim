@@ -1,15 +1,18 @@
 - content_for :page_title,  "Index"
-
-table
-  tr
-    th Name
-    th Presentation
-    th
- 
-  - @properties.each do |property|
-    tr
-      td = property.name
-      td = property.presentation
-      td = link_to 'Show', property_path(property) 
-  = link_to 'New', new_property_path
-  
+br
+div class="container"
+  div class="content"
+    = link_to 'New', new_property_path
+    hr
+    table class="table"
+      thead class="thead-light"
+        tr
+          th scope="col"Name
+          th scope="col"Presentation
+          th scope="col"Actions
+      tbody
+        - @properties.each do |property|
+          tr
+            td = property.name
+            td = property.presentation
+            td = link_to 'Show', property_path(property)

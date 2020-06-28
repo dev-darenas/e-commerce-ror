@@ -1,0 +1,12 @@
+
+div.container
+	nav class="level"
+		div class="level-left"
+			p class="level-item"
+					h1 DASHBOARD
+					div class="level-left"
+			p class="level-item float-right"
+			hr
+				- if user_signed_in? 
+					'Logged in as
+					strong =current_user.email

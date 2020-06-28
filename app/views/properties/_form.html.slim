@@ -1,13 +1,19 @@
-= form_with model: property do |form|
-  p
-    = form.label :name
-    = form.text_field :name
- 
-  p
-    = form.label :presentation 
-    = form.text_area :presentation
- 
-  p
-    = form.submit
-  = link_to 'Back', properties_path
-  
+br
+section class="section"
+  div class="container"
+    div class="content"
+      = link_to 'Back', properties_path
+      = form_with model: property, :html => {:class => "form-horizontal"} do |form|
+        p class="level-item"
+          div class="control-group"
+            = form.label :name, :class => "control-label"
+              div class="controls"
+                = form.text_field :name, :class => "input-xlarge"
+        p class="level-item"
+          div class="control-group"
+            = form.label :presentation, :class => "control-label"
+              div class="controls"
+                = form.text_field :presentation, :class => "input-xlarge"
+        p class="level-item"
+          div class="form-actions"
+            = form.submit :class => "btn btn-primary"

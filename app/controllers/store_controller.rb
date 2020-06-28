@@ -1,4 +1,5 @@
 class StoreController < ApplicationController
+  layout "store"
   before_action :authenticate_user!
   before_action :load_store
   

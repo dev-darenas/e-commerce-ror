@@ -1,27 +1,33 @@
-= form_with model: option_type do |form|
-  p
-    = form.label :name
-    br
-    = form.text_field :name
- 
-  p
-    = form.label :presentation 
-    br
-    = form.text_area :presentation
-
-  h1 Option values
-  p
-    h3 Value
-    = form.fields_for :option_values do |o|
-      p
-        = o.label :name
-        br
-        = o.text_field :name
-      p
-        = o.label :presentation
-        br
-        = o.text_field :presentation
-  p
-    = form.submit
-  = link_to 'Back', option_types_path
-  
+br
+section class="section"
+  div class="container"
+    div class="content"
+      = link_to 'Back', option_types_path
+      = form_with model: option_type, :html => {:class => "form-horizontal"} do |form|
+        p class="level-item"
+          div class="control-group"
+            = form.label :name, :class => "control-label"
+              div class="controls"
+                = form.text_field :name, :class => "input-xlarge"
+        p class="level-item"
+          div class="control-group"
+            = form.label :presentation, :class => "control-label"
+              div class="controls"
+                = form.text_field :presentation, :class => "input-xlarge"
+        hr
+        h1 Option values
+        p class="level-item"
+          = form.fields_for :option_values, :html => {:class => "form-horizontal"} do |o|
+            p class="level-item"
+              div class="control-group"
+                = o.label :name, :class => "control-label"
+                div class="controls"
+                  = o.text_field :name, :class => "input-xlarge"
+            p class="level-item"
+              div class="control-group"
+                = o.label :presentation, :class => "control-label"
+                div class="controls"
+                  = o.text_field :presentation, :class => "input-xlarge"
+        p class="level-item"
+          div class="form-actions"
+            = form.submit :class => "btn btn-primary"

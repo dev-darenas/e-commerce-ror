@@ -1,0 +1,21 @@
+nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+  button.btn.btn-link.d-md-none.rounded-circle.mr-3#sidebarToggleTop
+    i.fa.fa-bars
+
+  ul.navbar-nav.ml-auto
+    .topbar-divider.d-none.d-sm-block
+
+    li.nav-item.dropdown.no-arrow
+      a.nav-link.dropdown-toggle#userDropdown href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        span.mr-2.d-none.d-lg-inline.text-gray-600.small = current_user.email
+        img.img-profile.rounded-circle src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+
+      .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in aria-labelledby="userDropdown"
+        a.dropdown-item href="#"
+          i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+          | Perfil
+        a.dropdown-item href="#"
+          i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+          | Configuracion
+        div.dropdown-divider
+        = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
