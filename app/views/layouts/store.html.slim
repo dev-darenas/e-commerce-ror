@@ -14,10 +14,13 @@ html
 
   body#page-top
     #wrapper
-      = render 'components/navbar'
+      - if !devise_controller?
+        = render 'components/navbar'
 
       .d-flex.flex-column#content-wrapper
         #content
-          = render 'components/header'
+          - if !devise_controller?
+            = render 'components/header'
           .container-fluid
+            = render 'components/notifications'
             = yield
