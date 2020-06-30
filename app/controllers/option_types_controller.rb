@@ -17,7 +17,7 @@ class OptionTypesController < StoreController
     def create
         @option_types = @store.option_types.new(option_types_params)
         if @option_types.save
-          redirect_to @option_types, notice: 'option_types was successfully created.'
+          redirect_to option_types_path, notice: 'option_types was successfully created.'
         else
           render :new
         end

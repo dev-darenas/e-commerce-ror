@@ -2,32 +2,32 @@ br
 section class="section"
   div class="container"
     div class="content"
-      = link_to 'Back', option_types_path
-      = form_with model: option_type, :html => {:class => "form-horizontal"} do |form|
-        p class="level-item"
-          div class="control-group"
-            = form.label :name, :class => "control-label"
-              div class="controls"
-                = form.text_field :name, :class => "input-xlarge"
-        p class="level-item"
-          div class="control-group"
-            = form.label :presentation, :class => "control-label"
-              div class="controls"
-                = form.text_field :presentation, :class => "input-xlarge"
-        hr
-        h1 Option values
-        p class="level-item"
-          = form.fields_for :option_values, :html => {:class => "form-horizontal"} do |o|
-            p class="level-item"
-              div class="control-group"
-                = o.label :name, :class => "control-label"
-                div class="controls"
-                  = o.text_field :name, :class => "input-xlarge"
-            p class="level-item"
-              div class="control-group"
-                = o.label :presentation, :class => "control-label"
-                div class="controls"
-                  = o.text_field :presentation, :class => "input-xlarge"
-        p class="level-item"
-          div class="form-actions"
-            = form.submit :class => "btn btn-primary"
+      = form_with model: option_type do |form|
+        div.form-row
+          div.form-group.col-md-6
+            = form.label :name
+            = form.text_field :name, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :presentation
+            = form.text_field :presentation, class: "form-control"
+
+          table.table
+            thread
+              tr
+                th scope="col" Name
+                th scope="col" Presentation
+                th scope="col"
+            tbody
+              = form.fields_for :option_values do |o|
+                tr
+                  td = o.text_field :name, class: "form-control"
+                  td = o.text_field :presentation, class: "form-control"
+                  td 
+                    button.btn.btn-outline-danger x
+        div.row.justify-content-md-center
+          div.col.col-lg-2
+            = form.submit class: "btn btn-success"
+          div.col-md-auto
+            p or
+          div.col.col-lg-2
+            = link_to 'Back', option_types_path, class: "btn btn-light"

@@ -12,7 +12,7 @@ class PropertiesController < StoreController
   def create
     @properties = @store.properties.new(properties_params)
     if @properties.save
-      redirect_to @properties, notice: 'properties was successfully created.'
+      redirect_to properties_path, notice: 'properties was successfully created.'
     else
       render :new
     end
