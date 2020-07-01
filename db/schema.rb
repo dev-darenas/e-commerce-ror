@@ -108,10 +108,13 @@ ActiveRecord::Schema.define(version: 2020_06_24_133333) do
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "email"
+    t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x000055c0aa70d148>"
     t.index ["slug"], name: "index_stores_on_slug", unique: true
   end
 

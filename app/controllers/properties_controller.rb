@@ -12,7 +12,7 @@ class PropertiesController < StoreController
   def create
     @properties = @store.properties.new(properties_params)
     if @properties.save
-      redirect_to edit_property_path(@properties), notice: 'properties was successfully created.'
+      redirect_to edit_property_path(@properties), notice: 'property was successfully created.'
     else
       render :new
     end
@@ -20,7 +20,7 @@ class PropertiesController < StoreController
 
   def update
     @properties.update(properties_params)
-    redirect_to @properties
+    redirect_to edit_property_path(@properties), notice: 'property was successfully updated.'
   end
 
   def destroy
