@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @taxon.name
+p
+  strong Taxonomy:
+  = @taxon.taxonomy
+p
+  strong Store:
+  = @taxon.store
+p
+  strong Taxon:
+  = @taxon.taxon
+p
+  strong Permalink:
+  = @taxon.permalink
+
+=> link_to 'Edit', edit_taxon_path(@taxon)
+'|
+=< link_to 'Back', taxons_path

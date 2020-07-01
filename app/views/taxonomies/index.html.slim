@@ -1,0 +1,23 @@
+h1 Listing taxonomies
+
+table
+  thead
+    tr
+      th Name
+      th Store
+      th
+      th
+      th
+
+  tbody
+    - @taxonomies.each do |taxonomy|
+      tr
+        td = taxonomy.name
+        td = taxonomy.store_id
+        td = link_to 'Show', taxonomy
+        td = link_to 'Edit', edit_taxonomy_path(taxonomy)
+        td = link_to 'Destroy', taxonomy, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Taxonomy', new_taxonomy_path

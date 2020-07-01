@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_133333) do
+ActiveRecord::Schema.define(version: 2020_07_01_211806) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -118,6 +118,27 @@ ActiveRecord::Schema.define(version: 2020_06_24_133333) do
     t.index ["slug"], name: "index_stores_on_slug", unique: true
   end
 
+  create_table "taxonomies", force: :cascade do |t|
+    t.string "name"
+    t.integer "store_id_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id_id"], name: "index_taxonomies_on_store_id_id"
+  end
+
+  create_table "taxons", force: :cascade do |t|
+    t.string "name"
+    t.integer "taxonomy_id", null: false
+    t.integer "store_id", null: false
+    t.integer "taxon_id", null: false
+    t.string "permalink"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_taxons_on_store_id"
+    t.index ["taxon_id"], name: "index_taxons_on_taxon_id"
+    t.index ["taxonomy_id"], name: "index_taxons_on_taxonomy_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,6 +168,10 @@ ActiveRecord::Schema.define(version: 2020_06_24_133333) do
 
   add_foreign_key "option_values", "option_types"
   add_foreign_key "products", "stores"
+  add_foreign_key "taxonomies", "store_ids"
+  add_foreign_key "taxons", "stores"
+  add_foreign_key "taxons", "taxonomies"
+  add_foreign_key "taxons", "taxons"
   add_foreign_key "variants", "products"
   add_foreign_key "variants", "stores"
 end
