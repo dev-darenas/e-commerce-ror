@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :option_types
   resources :properties
   resources :option_values
+  resources :products
+  resources :variants
 
   namespace :api do
     namespace :v1 do

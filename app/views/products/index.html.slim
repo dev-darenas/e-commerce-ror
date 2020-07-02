@@ -1,0 +1,20 @@
+- content_for :page_title,  "Index"
+br
+section class="section"
+  div class="container"
+    div class="content"
+      = link_to 'New', new_product_path
+      hr
+      table class="table"
+        thead class="thead-light"
+          tr
+            th scope="col"Name
+            th scope="col"Description
+            th scope="col"Actions
+        tbody
+          - @products.each do |prod|
+            tr
+              td = prod.name
+              td = prod.description
+              td = link_to 'Edit', edit_product_path(prod)
+  

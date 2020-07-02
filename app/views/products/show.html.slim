@@ -1,0 +1,28 @@
+- content_for :page_title, @products.name
+br
+section class="section"
+	div class="container"
+		div class="content"
+		  div class="level-left"
+		    p class="level-item"
+		        = link_to 'Back', products_path
+		  div class="level-left"
+		    p class="level-item"
+		        strong Actions
+		  div class="level-right"
+		  	p class="level-item"
+		    	= link_to "Edit", edit_product_path(@products), class:"button"
+		  	p class="level-item"
+				= link_to "Delete", products_path(@products), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger"
+		hr
+
+		div class="content"
+			strong Name
+			br
+			= @products.name
+			br
+			br
+			strong Description
+			br
+			= @products.description
+			hr
