@@ -1,0 +1,41 @@
+section class="section"
+	div class="container"
+		div class="content"
+		  div class="level-left"
+		    p class="level-item"
+		        = link_to 'Back', variants_path
+		  div class="level-left"
+		    p class="level-item"
+		        strong Actions
+		  div class="level-right"
+		  	p class="level-item"
+		    	= link_to "Edit", edit_variant_path(@variants), class:"button"
+		  	p class="level-item"
+				= link_to "Delete", variants_path(@variants), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger"
+		hr
+
+		div class="content"
+			strong sku
+			br
+			= @variants.sku
+			br
+			br
+			strong Cost price
+			br
+			= @variants.cost_price
+			br
+			br
+			strong Price sale
+			br
+			= @variants.price_sale
+			br
+			br
+			strong Available on
+			br
+			= @variants.available_on
+			br
+			br
+			strong Discontinue on
+			br
+			= @variants.discontinue_on
+			hr

@@ -2,6 +2,16 @@ br
 section class="section"
   div class="container"
     div class="content"
+      ul class="nav nav-tabs"
+        li class="nav-item"
+          a class="nav-link active" href="/products/"General
+        li class="nav-item"
+          a class="nav-link disabled" href="#"Properties
+        li class="nav-item"
+          a class="nav-link" href="/variants/"Variants
+        li class="nav-item"
+          a class="nav-link disabled" href="#"Imagenes
+
       = form_with model: product do |form|
         div.form-row
           div.form-group.col-md-6
@@ -10,6 +20,23 @@ section class="section"
           div.form-group.col-md-6
             = form.label :description
             = form.text_field :description, class: "form-control"
+
+          = form.fields_for :variants do |o|
+            div.form-group.col-md-6
+              = o.label :sku
+              = o.text_field :sku, class: "form-control"
+            div.form-group.col-md-6
+              = o.label :cost_price
+              = o.text_field :cost_price, class: "form-control"
+            div.form-group.col-md-6
+              = o.label :price_sale
+              = o.text_field :price_sale, class: "form-control"
+            div.form-group.col-md-6
+              = o.label :available_on
+              = o.date_field :available_on, class: "form-control"
+            div.form-group.col-md-6
+              = o.label :discontinue_on
+              = o.date_field :discontinue_on, class: "form-control"
 
         div.row.justify-content-md-center
           div.col.col-lg-2

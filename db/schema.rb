@@ -159,6 +159,9 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
     t.integer "store_id", null: false
     t.integer "product_id", null: false
     t.decimal "cost_price"
+    t.decimal "price_sale"
+    t.datetime "available_on"
+    t.datetime "discontinue_on"
     t.string "sku"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

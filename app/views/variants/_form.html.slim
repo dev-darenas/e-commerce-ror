@@ -1,0 +1,39 @@
+br
+section class="section"
+  div class="container"
+    div class="content"
+      ul class="nav nav-tabs"
+        li class="nav-item"
+          a class="nav-link" href="/products/"General
+        li class="nav-item"
+          a class="nav-link disabled" href="#"Properties
+        li class="nav-item"
+          a class="nav-link active" href="/variants/"Variants
+        li class="nav-item"
+          a class="nav-link disabled" href="#"Imagenes
+
+      = form_with model: variant do |form|
+        div.form-row
+          div.form-group.col-md-6
+            = form.label :sku
+            = form.text_field :sku, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :cost_price
+            = form.text_field :cost_price, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :price_sale
+            = form.text_field :price_sale, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :available_on
+            = form.date_field :available_on, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :discontinue_on
+            = form.date_field :discontinue_on, class: "form-control"
+
+        div.row.justify-content-md-center
+          div.col.col-lg-2
+            = form.submit class: "btn btn-success"
+          div.col-md-auto
+            p or
+          div.col.col-lg-2
+            = link_to 'Back', variants_path, class: "btn btn-light"
