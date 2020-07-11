@@ -2,18 +2,20 @@ br
 section class="section"
   div class="container"
     div class="content"
-      = link_to 'Back', properties_path
-      = form_with model: property, :html => {:class => "form-horizontal"} do |form|
-        p class="level-item"
-          div class="control-group"
-            = form.label :name, :class => "control-label"
-              div class="controls"
-                = form.text_field :name, :class => "input-xlarge"
-        p class="level-item"
-          div class="control-group"
-            = form.label :presentation, :class => "control-label"
-              div class="controls"
-                = form.text_field :presentation, :class => "input-xlarge"
-        p class="level-item"
-          div class="form-actions"
-            = form.submit :class => "btn btn-primary"
+
+      = form_with model: property do |form|
+        div.form-row
+          div.form-group.col-md-6
+            = form.label :name
+            = form.text_field :name, class: "form-control"
+          div.form-group.col-md-6
+            = form.label :presentation
+            = form.text_field :presentation, class: "form-control"
+        div.row.justify-content-md-center
+          div.col.col-lg-2
+            = form.submit class: "btn btn-success"
+          div.col-md-auto
+            p or
+          div.col.col-lg-2
+            = link_to 'Back', properties_path, class: "btn btn-light"
+            
