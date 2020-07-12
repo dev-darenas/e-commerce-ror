@@ -17,7 +17,7 @@ class OptionTypesController < StoreController
     def create
         @option_types = @store.option_types.new(option_types_params)
         if @option_types.save
-          redirect_to edit_option_type_path(@option_types), notice: 'option_types was successfully created.'
+          redirect_to edit_option_type_path(@option_types), notice: 'option type was successfully created.'
         else
           render :new
         end
@@ -25,7 +25,7 @@ class OptionTypesController < StoreController
 
     def update
         @option_types.update(option_types_params)
-        redirect_to @option_types
+        redirect_to edit_option_type_path(@option_types), notice: 'option type was successfully updated.'
     end
 
     def destroy
@@ -41,6 +41,6 @@ class OptionTypesController < StoreController
     
     def option_types_params
         params.require(:option_type).permit(:name, :presentation,
-         :option_values_attributes => [:name, :presentation])
+         :option_values_attributes => [:id, :name, :presentation])
     end
 end

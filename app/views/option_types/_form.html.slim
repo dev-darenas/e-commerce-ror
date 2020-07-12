@@ -19,6 +19,7 @@ section class="section"
                 th scope="col"
             tbody
               = form.fields_for :option_values do |o|
+                = o.hidden_field :id
                 tr
                   td = o.text_field :name, class: "form-control"
                   td = o.text_field :presentation, class: "form-control"
