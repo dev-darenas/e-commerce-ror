@@ -1,0 +1,24 @@
+= form_for @taxon do |f|
+  - if @taxon.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@taxon.errors.count, "error")} prohibited this taxon from being saved:"
+      ul
+        - @taxon.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :taxonomy
+    = f.text_field :taxonomy
+  .field
+    = f.label :store
+    = f.text_field :store
+  .field
+    = f.label :taxon
+    = f.text_field :taxon
+  .field
+    = f.label :permalink
+    = f.text_field :permalink
+  .actions = f.submit

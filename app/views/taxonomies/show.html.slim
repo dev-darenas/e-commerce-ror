@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @taxonomy.name
+p
+  strong Store:
+  = @taxonomy.store_id
+
+=> link_to 'Edit', edit_taxonomy_path(@taxonomy)
+'|
+=< link_to 'Back', taxonomies_path
