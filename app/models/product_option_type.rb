@@ -1,4 +1,4 @@
 class ProductOptionType < ApplicationRecord
-    belongs_to :product
-    belongs_to :option_type
+  belongs_to :product
+  belongs_to :option_type
 end

@@ -1,20 +1,21 @@
-- content_for :page_title,  "Index"
+- content_for :page_title,  "Tipos de Opciones"
 br
-section class="section"
-  div class="container"
-    div class="content"
-      = link_to 'New', new_option_type_path
-      hr
-      table class="table"
-        thead class="thead-light"
-          tr
-            th scope="col"Name
-            th scope="col"Presentation
-            th scope="col"Actions
-        tbody
-          - @option_types.each do |option|
-            tr
-              td = option.name
-              td = option.presentation
-              td = link_to 'Edit', edit_option_type_path(option)
-  
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  .h3mb-0.text-gray-800
+    h2 Tipos de Opciones
+  = link_to 'Nueva Tipo', new_option_type_path, class: 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+
+div.content
+  hr
+  table class="table"
+    thead class="thead-light"
+      tr
+        th scope="col"Name
+        th scope="col"Presentation
+        th scope="col"Actions
+    tbody
+      - @option_types.each do |option|
+        tr
+          td = option.name
+          td = option.presentation
+          td = link_to 'Edit', edit_option_type_path(option)

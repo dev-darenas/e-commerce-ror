@@ -1,34 +1,29 @@
 br
-section class="section"
-  div class="container"
-    div class="content"
-      = form_with model: option_type do |form|
-        div.form-row
-          div.form-group.col-md-6
-            = form.label :name
-            = form.text_field :name, class: "form-control"
-          div.form-group.col-md-6
-            = form.label :presentation
-            = form.text_field :presentation, class: "form-control"
+div.content
+  = form_with model: option_type do |form|
+    div.form-row
+      div.form-group.col-md-6
+        = form.label :name
+        = form.text_field :name, class: "form-control"
+      div.form-group.col-md-6
+        = form.label :presentation
+        = form.text_field :presentation, class: "form-control"
 
-          table.table
-            thread
-              tr
-                th scope="col" Name
-                th scope="col" Presentation
-                th scope="col"
-            tbody
-              = form.fields_for :option_values do |o|
-                = o.hidden_field :id
-                tr
-                  td = o.text_field :name, class: "form-control"
-                  td = o.text_field :presentation, class: "form-control"
-                  td 
-                    button.btn.btn-outline-danger x
-        div.row.justify-content-md-center
-          div.col.col-lg-2
-            = form.submit class: "btn btn-success"
-          div.col-md-auto
-            p or
-          div.col.col-lg-2
-            = link_to 'Back', option_types_path, class: "btn btn-light"
+    - unless option_type.new_record?
+      table.table
+        thread
+          tr
+            th scope="col" Nombre
+            th scope="col" Presentacion
+            th scope="col" Eliminar
+        tbody
+          = form.fields_for :option_values do |ov|
+            = ov.hidden_field :id
+            tr
+              td = ov.text_field :name, class: "form-control"
+              td = ov.text_field :presentation, class: "form-control"
+              td = ov.check_box :_destroy
+
+    div
+      = form.submit class: "btn btn-success"
+      = link_to 'Back', option_types_path, class: "btn btn-warning"

@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
 
   create_table "taxonomies", force: :cascade do |t|
     t.string "name"
-    t.integer "store_id_id", null: false
+    t.integer "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id_id"], name: "index_taxonomies_on_store_id_id"
+    t.index ["store_id"], name: "index_taxonomies_on_store_id"
   end
 
   create_table "taxons", force: :cascade do |t|
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
 
   add_foreign_key "option_values", "option_types"
   add_foreign_key "products", "stores"
-  add_foreign_key "taxonomies", "store_ids"
+  add_foreign_key "taxonomies", "stores"
   add_foreign_key "taxons", "stores"
   add_foreign_key "taxons", "taxonomies"
   add_foreign_key "taxons", "taxons"
