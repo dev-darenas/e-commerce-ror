@@ -7,4 +7,5 @@ class Store < ApplicationRecord
   has_many :variants
   has_many :option_types
   has_many :properties
+  has_many :taxonomies
 end

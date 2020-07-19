@@ -1,11 +1,11 @@
 br
-div.content
+.content
   = form_with model: property do |form|
-    div.form-row
-      div.form-group.col-md-6
+    .form-row
+      .form-group.col-md-6
         = form.label :name
         = form.text_field :name, class: "form-control"
-      div.form-group.col-md-6
+      .form-group.col-md-6
         = form.label :presentation
         = form.text_field :presentation, class: "form-control"
     div

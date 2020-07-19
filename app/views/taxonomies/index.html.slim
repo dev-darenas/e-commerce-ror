@@ -1,23 +1,17 @@
-h1 Listing taxonomies
-
-table
-  thead
-    tr
-      th Name
-      th Store
-      th
-      th
-      th
-
-  tbody
-    - @taxonomies.each do |taxonomy|
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  .h3mb-0.text-gray-800
+    h2 Taxonomy
+  = link_to 'Nueva taxonomy', new_taxonomy_path, class: 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+div.content
+  hr
+  table
+    thead
       tr
-        td = taxonomy.name
-        td = taxonomy.store_id
-        td = link_to 'Show', taxonomy
-        td = link_to 'Edit', edit_taxonomy_path(taxonomy)
-        td = link_to 'Destroy', taxonomy, data: { confirm: 'Are you sure?' }, method: :delete
-
+        th Name
+        th
+    tbody
+      - @taxonomies.each do |taxonomy|
+        tr
+          td = taxonomy.name
+          td = link_to 'Edit', edit_taxonomy_path(taxonomy)
 br
-
-= link_to 'New Taxonomy', new_taxonomy_path

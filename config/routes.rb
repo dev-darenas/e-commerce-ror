@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :taxons
-  resources :taxonomies
   devise_for :users
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -10,6 +8,15 @@ Rails.application.routes.draw do
   resources :option_types
   resources :properties
   resources :option_values
+  resources :taxonomies do
+    scope module: :taxonomies do
+      resources :parent_taxon do
+        scope module: :parent_taxon do
+          resources :taxons
+        end
+      end
+    end
+  end
 
   namespace :api do
     namespace :v1 do

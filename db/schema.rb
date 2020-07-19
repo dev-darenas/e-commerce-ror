@@ -130,12 +130,11 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
     t.string "name"
     t.integer "taxonomy_id", null: false
     t.integer "store_id", null: false
-    t.integer "taxon_id", null: false
+    t.integer "parent_id"
     t.string "permalink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_taxons_on_store_id"
-    t.index ["taxon_id"], name: "index_taxons_on_taxon_id"
     t.index ["taxonomy_id"], name: "index_taxons_on_taxonomy_id"
   end
 
@@ -171,7 +170,6 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
   add_foreign_key "taxonomies", "stores"
   add_foreign_key "taxons", "stores"
   add_foreign_key "taxons", "taxonomies"
-  add_foreign_key "taxons", "taxons"
   add_foreign_key "variants", "products"
   add_foreign_key "variants", "stores"
 end

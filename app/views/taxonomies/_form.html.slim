@@ -1,15 +1,29 @@
-= form_for @taxonomy do |f|
-  - if @taxonomy.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@taxonomy.errors.count, "error")} prohibited this taxonomy from being saved:"
-      ul
-        - @taxonomy.errors.full_messages.each do |message|
-          li = message
+br
+div.content
+  = form_for taxonomy do |f|
+    .form-row
+      .form-group.col-md-6
+        = f.label :name
+        = f.text_field :name, class: "form-control"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :store_id
-    = f.text_field :store_id
-  .actions = f.submit
+
+    - unless taxonomy.new_record?
+      = f.label taxonomy.root.name
+
+      = f.fields_for :taxons do |taxon_form|
+        - unless taxon_form.object.parent_id.nil?
+          = taxon_form.hidden_field :id
+          = taxon_form.hidden_field :parent_id
+          = taxon_form.hidden_field :store_id
+
+          .form-row
+            .form-group.col-md-6
+              = taxon_form.label :name
+              = taxon_form.text_field :name, class: "form-control"
+            .form-group.col-md-6
+              = taxon_form.label :eliminar
+              = taxon_form.check_box :_destroy
+
+    div
+      = f.submit class: "btn btn-success"
+      = link_to 'Atras', taxonomies_path, class: "btn btn-warning"
