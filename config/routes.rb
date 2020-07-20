@@ -17,6 +17,13 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :products do
+    scope module: :products do
+      resources :properties
+      resources :variants
+      resources :images
+    end
+  end
 
   namespace :api do
     namespace :v1 do

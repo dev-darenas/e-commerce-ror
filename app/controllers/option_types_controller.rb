@@ -39,16 +39,16 @@ class OptionTypesController < StoreController
   end
 
   def option_types_params
-  params
-    .require(:option_type)
-    .permit(
-      :name, :presentation,
-      option_values_attributes: [
-        :id,
-        :name,
-        :presentation,
-        :_destroy
-      ]
-    )
+    params
+      .require(:option_type)
+      .permit(
+        :name, :presentation,
+        option_values_attributes: [
+          :id,
+          :name,
+          :presentation,
+          :_destroy
+        ]
+      )
   end
 end

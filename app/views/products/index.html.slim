@@ -1,0 +1,21 @@
+- content_for :title,  "Productos"
+br
+
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  .h3mb-0.text-gray-800
+    h2 Productos
+  = link_to 'Nueva producto', new_product_path, class: 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+div.content
+  hr
+  table.table
+    thead.thead-light
+      tr
+        th scope="col" Nombre
+        th scope="col" SKU
+        th scope="col" 
+    tbody
+      - @products.each do |product|
+        tr
+          td = product.name
+          td = product.sku
+          td = link_to 'Editar', edit_product_path(product)

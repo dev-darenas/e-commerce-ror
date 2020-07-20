@@ -23,6 +23,7 @@ ul.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion#accordionSideba
     .collapse#collapseTwo aria-labelledby="headingTwo" data-parent="#accordionSidebar"
       .bg-white.py-2.collapse-inner.rounded
         h6.collapse-header Configurar Productos
+        = link_to 'Productos', products_path, class: 'collapse-item'
         = link_to 'Propiedades', properties_path, class: 'collapse-item'
         = link_to 'Tipos de opciones', option_types_path, class: 'collapse-item'
         = link_to 'Taxonomies', taxonomies_path, class: 'collapse-item'

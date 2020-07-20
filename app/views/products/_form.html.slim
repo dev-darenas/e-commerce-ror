@@ -1,0 +1,25 @@
+br
+div.content
+  = form_with model: product do |form|
+    = form.hidden_field :store_id
+
+    div.form-row
+      div.form-group.col-md-6
+        = form.label :name
+        = form.text_field :name, class: "form-control"
+
+      div.form-group.col-md-6
+        = form.label :sku
+        = form.text_field :sku, class: "form-control"
+
+      div.form-group.col-md-6
+        = form.label :description
+        = form.text_area :description, class: "form-control"
+
+      div.form-group.col-md-6
+        = form.label :cost_price
+        = form.number_field :cost_price, class: "form-control"
+
+    div
+      = form.submit class: "btn btn-success"
+      = link_to 'Atras', products_path, class: "btn btn-warning"

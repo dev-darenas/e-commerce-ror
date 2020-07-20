@@ -25,10 +25,12 @@ class Product < ApplicationRecord
             class_name: 'Variant'
 
   delegate :sku, :sku=, to: :find_or_build_master
-  delegate :price, :price=, to: :find_or_build_master
+  delegate :cost_price, :cost_price=, to: :find_or_build_master
 
   def find_or_build_master
-    master || build_master(store: self.store)
+    # TODO: this should be the store of the product
+    # but with self.store we got error
+    master || build_master(store: self.store || Store.first)
   end
 
   private

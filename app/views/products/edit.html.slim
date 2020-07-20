@@ -1,0 +1,4 @@
+- content_for :page_title, "Editar #{@product.name} Producto"
+
+= render 'products/components/tabs'
+= render 'form', product: @product

@@ -1,0 +1,10 @@
+ul.nav.nav-tabs
+  li.nav-item
+    = link_to "General", edit_product_path(@product), class: 'nav-link'
+  li.nav-item
+    = link_to "Variantes", product_variants_path(@product), class: 'nav-link'
+  li.nav-item
+    = link_to "Imagenes", product_images_path(@product), class: 'nav-link'
+  li.nav-item
+    = link_to "Propiedades", product_properties_path(@product), class: 'nav-link'
+    
