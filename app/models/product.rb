@@ -2,9 +2,14 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :product_option_types
+  has_many :product_option_types, dependent: :destroy, inverse_of: :product
+  has_many :option_types, through: :product_option_types
+  accepts_nested_attributes_for :product_option_types,
+    reject_if: lambda {
+      |a| a[:option_type_id].blank?
+    }, allow_destroy: true
+
   has_many :product_propertys
-  has_many :option_types, through: :product_option_type
   has_many :propertys, through: :product_propertys
   belongs_to :store
   after_save :save_master

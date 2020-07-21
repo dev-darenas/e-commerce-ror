@@ -19,6 +19,19 @@ div.content
       div.form-group.col-md-6
         = form.label :cost_price
         = form.number_field :cost_price, class: "form-control"
+ 
+      div.form-group.col-md-6
+        h4 Tipos de Productos
+        hr
+
+        = form.fields_for :product_option_types do |product_option_types_form|
+          = product_option_types_form.collection_select :option_type_id,
+              @store.option_types,
+              :id,
+              :name,
+              { include_blank: ' ' }
+          = product_option_types_form.check_box :_destroy
+          br
 
     div
       = form.submit class: "btn btn-success"

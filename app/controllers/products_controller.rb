@@ -11,20 +11,15 @@ class ProductsController < StoreController
 
   def create
     @product = @store.products.new(product_params)
-
-    p " @product "
-    p @product
-
     if @product.save
       redirect_to edit_product_path(@product), notice: 'Producto creado'
     else
-      p " @product errors "
-      p @product.errors
       render :new
     end
   end
 
   def edit
+    @product.product_option_types.new
   end
 
   def update
@@ -41,6 +36,16 @@ class ProductsController < StoreController
   def product_params
     params
       .require(:product)
-      .permit(:name, :sku, :description, :cost_price, :store_id)
+      .permit(:name, 
+        :sku,
+        :description,
+        :cost_price,
+        :store_id,
+        product_option_types_attributes: [
+          :id,
+          :option_type_id,
+          :_destroy
+        ]
+      )
   end
 end

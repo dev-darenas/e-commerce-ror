@@ -1,3 +1,20 @@
-h2 Variantes
-
 = render 'products/components/tabs'
+
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  .h3mb-0.text-gray-800
+    h2 Variantes
+  = link_to 'Nueva variant', new_product_variant_path(@product), class: 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+div.content
+  hr
+  table.table
+    thead.thead-light
+      tr
+        th scope="col" Nombre
+        th scope="col" SKU
+        th scope="col" 
+    tbody
+      - @variants.each do |variant|
+        tr
+          td = variant.name
+          td = variant.sku
+          td = link_to 'Editar', edit_product_variant_path(@product, variant)

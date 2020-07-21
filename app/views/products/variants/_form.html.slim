@@ -1,0 +1,25 @@
+= render 'products/components/tabs'
+
+br
+div.content
+  = form_with model: [@product, @variant] do |form|
+    = form.hidden_field :store_id, value: @product.store.id
+    - @product.option_types.each do |option_type|
+      div.form-row
+        div.form-group.col-md-6
+          = form.label option_type.presentation
+          = form.collection_select 'option_value_ids',
+                                    option_type.option_values, :id, :name,
+                                    { include_blank: true }, { name: 'variant[option_value_ids][]' }
+    div.form-row
+      div.form-group.col-md-6
+        = form.label :sku
+        = form.text_field :sku, class: "form-control"
+
+    div.form-row
+      div.form-group.col-md-6
+        = form.label :cost_price
+        = form.text_field :cost_price, class: "form-control"
+
+    div
+      = form.submit class: "btn btn-success"
