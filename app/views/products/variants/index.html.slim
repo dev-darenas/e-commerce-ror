@@ -9,12 +9,14 @@ div.content
   table.table
     thead.thead-light
       tr
-        th scope="col" Nombre
+        th scope="col" Optiones
         th scope="col" SKU
+        th scope="col" Costo
         th scope="col" 
     tbody
       - @variants.each do |variant|
         tr
-          td = variant.name
+          td = variant.options_text
           td = variant.sku
+          td = variant.cost_price
           td = link_to 'Editar', edit_product_variant_path(@product, variant)

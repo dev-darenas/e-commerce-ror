@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_211806) do
+ActiveRecord::Schema.define(version: 2020_07_21_030818) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
     t.index ["store_id"], name: "index_option_types_on_store_id"
   end
 
+  create_table "option_value_variants", force: :cascade do |t|
+    t.integer "option_value_id", null: false
+    t.integer "variant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_value_id"], name: "index_option_value_variants_on_option_value_id"
+    t.index ["variant_id"], name: "index_option_value_variants_on_variant_id"
+  end
+
   create_table "option_values", force: :cascade do |t|
     t.string "name"
     t.string "presentation"
@@ -68,11 +77,11 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
   end
 
   create_table "product_option_types", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "option_types_id"
+    t.integer "product_id", null: false
+    t.integer "option_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["option_types_id"], name: "index_product_option_types_on_option_types_id"
+    t.index ["option_type_id"], name: "index_product_option_types_on_option_type_id"
     t.index ["product_id"], name: "index_product_option_types_on_product_id"
   end
 
@@ -165,7 +174,11 @@ ActiveRecord::Schema.define(version: 2020_07_01_211806) do
     t.index ["store_id"], name: "index_variants_on_store_id"
   end
 
+  add_foreign_key "option_value_variants", "option_values"
+  add_foreign_key "option_value_variants", "variants"
   add_foreign_key "option_values", "option_types"
+  add_foreign_key "product_option_types", "option_types"
+  add_foreign_key "product_option_types", "products"
   add_foreign_key "products", "stores"
   add_foreign_key "taxonomies", "stores"
   add_foreign_key "taxons", "stores"
