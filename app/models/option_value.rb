@@ -5,6 +5,6 @@ class OptionValue < ApplicationRecord
   has_many :variants, through: :option_value_variants
 
   def value_text
-    "#{option_type.name}: #{presentation}"
+    "#{option_type.name}: #{name}"
   end
 end
