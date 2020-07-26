@@ -4,6 +4,7 @@ class Variant < ApplicationRecord
 
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
+  has_many :images, as: :imageable
 
   delegate :name, :name=, :description, :slug, to: :product
 
