@@ -1,3 +1,9 @@
-h2 Imagenes
-
 = render 'products/components/tabs'
+
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  .h3mb-0.text-gray-800
+    h2 Imagenes
+  = link_to 'Nueva image', new_product_image_path(@product), class: 'd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+div.content
+  hr
+  table.table

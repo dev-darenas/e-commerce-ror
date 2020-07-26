@@ -1,0 +1,23 @@
+= render 'products/components/tabs'
+
+br
+div.content
+  = form_with model: [@product, @image] do |form|
+    div.form-row
+      .form-group.col-md-6
+        = form.label :variant
+        = form.select :imageable_id,
+                      @product.variants_including_master.collect { |p| [ p.options_text, p.id ] },
+                      { include_blank: false },
+                      { class: 'form-control'}
+
+      .form-group.col-md-6
+        = form.label :alt
+        = form.text_area :alt , class: 'form-control'
+
+      .form-group.col-md-6
+        = form.label :image
+        = form.file_field :image , class: 'form-control'
+
+    div
+      = form.submit class: "btn btn-success"

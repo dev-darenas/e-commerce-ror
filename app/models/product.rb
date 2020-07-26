@@ -12,6 +12,7 @@ class Product < ApplicationRecord
   has_many :product_propertys
   has_many :propertys, through: :product_propertys
   belongs_to :store
+
   after_save :save_master
 
   has_one :master,
@@ -28,6 +29,8 @@ class Product < ApplicationRecord
   has_many :variants_including_master,
             inverse_of: :product,
             class_name: 'Variant'
+
+  has_many :variant_images, source: :images, through: :variants_including_master
 
   delegate :sku, :sku=, to: :find_or_build_master
   delegate :cost_price, :cost_price=, to: :find_or_build_master

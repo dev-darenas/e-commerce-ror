@@ -14,9 +14,6 @@ class TaxonomiesController < StoreController
     if @taxonomy.save
       redirect_to edit_taxonomy_path(@taxonomy), notice: 'Taxonomy ha sido actualizado.'
     else
-      p " @taxonomy "
-      p @taxonomy.errors
-
       render :new
     end
   end
