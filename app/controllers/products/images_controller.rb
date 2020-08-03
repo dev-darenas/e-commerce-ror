@@ -25,6 +25,8 @@ module Products
     end
 
     def update
+      @image.update(params_image)
+      redirect_to edit_product_image_path(@product, @image), notice: 'Imagen ha sido actualizado.'
     end
 
     private

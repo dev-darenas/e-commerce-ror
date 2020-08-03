@@ -20,7 +20,8 @@ div.content
         = form.file_field :image , class: 'form-control'
 
       - unless @image.new_record?
-        = image_tag(@image.image.product.url, alt: @image.alt)
+        - if @image&.image&.product&.url
+          = image_tag(@image.image.product.url, alt: @image.alt)
 
     div
       = form.submit class: "btn btn-success"

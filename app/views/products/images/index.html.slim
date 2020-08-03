@@ -16,5 +16,7 @@ div.content
       - @images.each do |img|
         tr
           td = img.imageable.options_text
-          td = image_tag(img.image.mini.url, alt: img.alt)
+          td
+            - if img&.image&.mini&.url
+              = image_tag(img&.image&.mini&.url, alt: img&.alt)
           td = link_to 'Editar', edit_product_image_path(@product, img)
