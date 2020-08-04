@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.5
+    environment:
+      POSTGRES_DB: e_commerce_prod
+      POSTGRES_USER: db-user
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    build: .
+    volumes:
+      - .:/e-commerce
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
