@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_07_22_025921) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
   create_table "images", force: :cascade do |t|
     t.text "alt"
     t.string "imageable_type", null: false
-    t.integer "imageable_id", null: false
+    t.bigint "imageable_id", null: false
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,15 +65,15 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
   create_table "option_types", force: :cascade do |t|
     t.string "name"
     t.string "presentation"
-    t.integer "store_id"
+    t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_option_types_on_store_id"
   end
 
   create_table "option_value_variants", force: :cascade do |t|
-    t.integer "option_value_id", null: false
-    t.integer "variant_id", null: false
+    t.bigint "option_value_id", null: false
+    t.bigint "variant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["option_value_id"], name: "index_option_value_variants_on_option_value_id"
@@ -80,15 +83,15 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
   create_table "option_values", force: :cascade do |t|
     t.string "name"
     t.string "presentation"
-    t.integer "option_type_id", null: false
+    t.bigint "option_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["option_type_id"], name: "index_option_values_on_option_type_id"
   end
 
   create_table "product_option_types", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "option_type_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "option_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["option_type_id"], name: "index_product_option_types_on_option_type_id"
@@ -96,8 +99,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
   end
 
   create_table "product_properties", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "property_id"
+    t.bigint "product_id"
+    t.bigint "property_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_product_properties_on_product_id"
@@ -108,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
     t.string "name"
     t.text "description"
     t.string "slug"
-    t.integer "store_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "available_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -119,7 +122,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.string "presentation"
-    t.integer "store_id"
+    t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_properties_on_store_id"
@@ -139,7 +142,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
 
   create_table "taxonomies", force: :cascade do |t|
     t.string "name"
-    t.integer "store_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_taxonomies_on_store_id"
@@ -147,8 +150,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
 
   create_table "taxons", force: :cascade do |t|
     t.string "name"
-    t.integer "taxonomy_id", null: false
-    t.integer "store_id", null: false
+    t.bigint "taxonomy_id", null: false
+    t.bigint "store_id", null: false
     t.integer "parent_id"
     t.string "permalink"
     t.datetime "created_at", precision: 6, null: false
@@ -164,7 +167,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.integer "store_id"
+    t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -174,8 +177,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
 
   create_table "variants", force: :cascade do |t|
     t.boolean "is_master"
-    t.integer "store_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "store_id", null: false
+    t.bigint "product_id", null: false
     t.decimal "cost_price"
     t.string "sku"
     t.datetime "created_at", precision: 6, null: false
