@@ -20,3 +20,4 @@ default: &default
   production: &production
     <<: *default
     database: e_commerce
+    username: rails
