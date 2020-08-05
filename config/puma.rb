@@ -10,40 +10,26 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+app_dir = File.expand_path("../..", __FILE__)
+shared_dir = "#{app_dir}/shared"
 
-# Specifies the `environment` that Puma will run in.
-#
-rails_env = ENV.fetch("RAILS_ENV") { "development" }
+# Default to production
+rails_env = ENV['RAILS_ENV'] || "production"
 environment rails_env
 
-# Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+# Set up socket location
+bind "unix://#{shared_dir}/sockets/puma.sock"
 
-app_dir = File.expand_path("../..", __FILE__)
-directory app_dir
-shared_dir = "#{app_dir}/tmp"
+# Logging
+stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
-if %w[production staging].member?(rails_env)
-  # Logging
-  stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+# Set master PID and state locations
+pidfile "#{shared_dir}/pids/puma.pid"
+state_path "#{shared_dir}/pids/puma.state"
+activate_control_app
 
-  pidfile "#{shared_dir}/pids/puma.pid"
-  state_path "#{shared_dir}/pids/puma.state"
-
-  workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-  preload_app!
-
-  bind "unix://#{shared_dir}/sockets/puma.sock"
+on_worker_boot do
+  require "active_record"
+  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end
-
-# Use the `preload_app!` method when specifying a `workers` number.
-# This directive tells Puma to first boot the application and load code
-# before forking the application. This takes advantage of Copy On Write
-# process behavior so workers use less memory.
-#
-# preload_app!
-
-# Allow puma to be restarted by `rails restart` command.
-plugin :tmp_restart
