@@ -7,7 +7,6 @@ services:
       POSTGRES_USER: db-user
       POSTGRES_PASSWORD: 1234
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
       - postgres-data:/var/lib/postgresql/data
   web:
     build: .
