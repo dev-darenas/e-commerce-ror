@@ -1,5 +1,5 @@
 FROM ruby:2.6.5-alpine
-RUN apk update -qq && apk install -y nodejs postgresql-client build-essential libpq-dev
+RUN apk update -qq && apk add nodejs postgresql-client build-essential libpq-dev
 RUN mkdir /e-commerce
 WORKDIR /e-commerce
 COPY Gemfile /e-commerce/Gemfile
