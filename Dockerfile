@@ -1,5 +1,5 @@
 FROM ruby:2.6.5
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client build-essential libpq-dev
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client build-essential libpq-dev yarn
 RUN mkdir /e-commerce
 WORKDIR /e-commerce
 COPY Gemfile /e-commerce/Gemfile
