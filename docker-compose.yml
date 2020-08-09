@@ -12,6 +12,7 @@ services:
     build: .
     environment:
       RAILS_ENV: production
+      SECRET_KEY:
     volumes:
       - .:/e-commerce
     ports:
