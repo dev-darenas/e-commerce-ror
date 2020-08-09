@@ -7,7 +7,7 @@ COPY Gemfile.lock /e-commerce/Gemfile.lock
 RUN bundle install
 COPY . /e-commerce
 
-RUN yarn install --check-files
+RUN yarn install
 
 EXPOSE 3000
 
