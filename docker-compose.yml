@@ -10,6 +10,8 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
+    environment:
+      RAILS_ENV: production
     volumes:
       - .:/e-commerce
     ports:
