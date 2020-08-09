@@ -13,11 +13,16 @@ div.content
 
       .form-group.col-md-6
         = form.label :alt
-        = form.text_area :alt , class: 'form-control'
+        = form.text_area :alt, class: 'form-control'
 
-      .form-group.col-md-6
-        = form.label :image
-        = form.file_field :image , class: 'form-control'
+      - if @image.new_record?
+        .form-group.col-md-6
+          = form.label :image
+          = form.file_field :image, multiple: true, name: 'images[]', class: 'form-control'
+      - else
+        .form-group.col-md-6
+          = form.label :image
+          = form.file_field :image , class: 'form-control'
 
       - unless @image.new_record?
         - if @image&.image&.product&.url

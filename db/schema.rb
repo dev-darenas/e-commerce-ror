@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_025921) do
+ActiveRecord::Schema.define(version: 2020_08_09_191648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
     t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "whatsapp"
     t.index ["slug"], name: "index_stores_on_slug", unique: true
   end
 
@@ -183,6 +184,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_025921) do
     t.string "sku"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "enable", default: true
     t.index ["product_id"], name: "index_variants_on_product_id"
     t.index ["store_id"], name: "index_variants_on_store_id"
   end

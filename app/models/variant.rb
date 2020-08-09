@@ -9,6 +9,7 @@ class Variant < ApplicationRecord
   delegate :name, :name=, :description, :slug, to: :product
 
   def options_text
-    option_values.map(&:value_text).join(', ')
+    name_variant = option_values.map(&:value_text).join(', ')
+    return name_variant.blank? ? name : name_variant
   end
 end

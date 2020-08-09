@@ -12,13 +12,15 @@ module Products
 
     def create
       @variant = @product.variants_including_master.find(params[:image][:imageable_id])
-      @image = @variant.images.new(params_image)
 
-      if @image.save!
-        redirect_to edit_product_image_path(@product, @image), notice: 'Imagen ha sido actualizado.'
-      else
-        render :new
+      params[:images].each do |img|
+        @image = @variant.images.new(params_image)
+        @image.image = img
+
+        @image.save!
       end
+
+      redirect_to edit_product_image_path(@product, @image), notice: 'Imagen ha sido actualizado.'
     end
 
     def edit

@@ -1,0 +1,12 @@
+br
+.content
+  = form_with model: store do |form|
+    div.form-row
+      div.form-group.col-md-6
+        = form.label :name
+        = form.text_field :name, class: "form-control"
+      div.form-group.col-md-6
+        = form.label :whatsapp
+        = form.text_field :whatsapp, class: "form-control"
+    div
+      = form.submit class: "btn btn-success"
