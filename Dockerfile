@@ -19,5 +19,3 @@ EXPOSE 3000
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
-
-RUN RAILS_ENV=production bundle exec rake assets:precompile
