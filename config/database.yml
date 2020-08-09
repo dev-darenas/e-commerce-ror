@@ -1,11 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: <%= Rails.application.credentials.config[:DATABASE_NAME] || 'e_commerce_dev' %>
-  port:     <%= Rails.application.credentials.config[:DATABASE_PORT] || 5432 %>
-  host:     <%= Rails.application.credentials.config[:DATABASE_HOST] || 'localhost' %>
-  username: <%= Rails.application.credentials.config[:DATABASE_USERNAME] || '' %>
-  password: <%= Rails.application.credentials.config[:DATABASE_PASSWORD] %>
+  database: <%= Rails.application.credentials.config[:DATABASE_NAME] || ENV['DATABASE_NAME']  || 'e_commerce_dev' %>
+  port:     <%= Rails.application.credentials.config[:DATABASE_PORT] || ENV['DATABASE_PORT'] || 5432 %>
+  host:     <%= Rails.application.credentials.config[:DATABASE_HOST] || ENV['DATABASE_HOST'] || 'localhost' %>
+  username: <%= Rails.application.credentials.config[:DATABASE_USERNAME] || ENV['DATABASE_USER']  || '' %>
+  password: <%= Rails.application.credentials.config[:DATABASE_PASSWORD] || ENV['DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
