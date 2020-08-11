@@ -3,9 +3,9 @@ services:
   db:
     image: postgres:10-alpine
     environment:
-      POSTGRES_DB: e_commerce_prod
-      POSTGRES_USER: db-user
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
@@ -13,6 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432
       RAILS_ENV: production
       SECRET_KEY:
     volumes:

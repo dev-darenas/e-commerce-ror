@@ -17,4 +17,5 @@ RUN yarn install --check-files
 
 EXPOSE 3000
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+CMD ["rails","server","-b","0.0.0.0"]
+# ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]

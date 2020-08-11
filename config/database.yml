@@ -18,6 +18,4 @@ test: &test
   database: e_commerce_test
 
 production: &production
-  <<: *default
-  database: e_commerce
-  username: rails
+  url: <%= ENV['DATABASE_URL'] %>
