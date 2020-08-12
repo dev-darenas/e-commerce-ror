@@ -18,4 +18,4 @@ test: &test
   database: e_commerce_test
 
 production: &production
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
