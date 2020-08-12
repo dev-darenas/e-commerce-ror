@@ -14,6 +14,7 @@ RUN bundle install
 
 ADD . $APP_HOME
 RUN yarn install --check-files
+VOLUME ["$RAILS_ROOT/public"]
 
 EXPOSE 3000
 
